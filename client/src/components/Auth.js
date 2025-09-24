@@ -28,9 +28,11 @@ const Auth = () => {
     });
 
     return () => {
-      authListener.subscription.unsubscribe();
+      if (authListener?.subscription) {
+        authListener.subscription.unsubscribe();
+      }
     };
-  }, []);
+  }, [setSession]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -37,3 +37,18 @@ temp/
 .env
 .env.local
 .env.*.local
+.env.example
+
+# Archivos de configuración del backend
+/server/.env
+/server/.env.local
+/server/.env.*.local
+/server/node_modules
+
+# Archivos de configuración del frontend
+/client/.env.local
+/client/.env.*.local
+/client/node_modules
+
+# Archivos de configuración de Vercel
+.vercel

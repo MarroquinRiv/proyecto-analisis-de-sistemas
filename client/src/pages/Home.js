@@ -1,10 +1,5 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import CleaningManagement from '../components/CleaningManagement';
-import FeedingManagement from '../components/FeedingManagement';
-import ClinicalManagement from '../components/ClinicalManagement';
-import TicketManagement from '../components/TicketManagement';
-import Reports from '../components/Reports';
 
 const Home = () => {
   return (
@@ -19,51 +14,17 @@ const Home = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium text-green-700 mb-2">Limpieza</h3>
-            <p className="text-gray-600">Gestiona tareas de limpieza y registros de ejecución.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium text-green-700 mb-2">Alimentación</h3>
-            <p className="text-gray-600">Administra inventario y horarios de alimentación.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium text-green-700 mb-2">Control Clínico</h3>
-            <p className="text-gray-600">Registro de visitas veterinarias y tratamientos.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium text-green-700 mb-2">Entradas</h3>
-            <p className="text-gray-600">Gestiona tipos de entrada y promociones.</p>
-          </div>
-        </div>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Gestión de Limpieza</h3>
-          <CleaningManagement />
-        </div>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Gestión de Alimentación</h3>
-          <FeedingManagement />
-        </div>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Control Clínico</h3>
-          <ClinicalManagement />
-        </div>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Entradas y Promociones</h3>
-          <TicketManagement />
-        </div>
-        
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Reportes</h3>
-          <Reports />
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h3 className="text-xl font-semibold mb-4">Funcionalidades Disponibles</h3>
+          <p className="text-gray-600">Este es un sistema de gestión completo para el zoológico Mirada Salvaje.</p>
+          <p className="text-gray-600 mt-2">Las funcionalidades principales incluyen:</p>
+          <ul className="list-disc list-inside mt-2 text-gray-600">
+            <li>Gestión de limpieza</li>
+            <li>Gestión de alimentación</li>
+            <li>Control clínico</li>
+            <li>Gestión de entradas</li>
+            <li>Generación de reportes</li>
+          </ul>
         </div>
       </main>
       
