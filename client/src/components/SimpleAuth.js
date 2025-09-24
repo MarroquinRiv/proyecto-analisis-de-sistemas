@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import { useAuth } from '../context/AuthContext';
 
-const Auth = () => {
+const SimpleAuth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
-
-  const { session, setSession } = useAuth();
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
     // Verificar sesión existente
@@ -32,7 +30,7 @@ const Auth = () => {
         authListener.subscription.unsubscribe();
       }
     };
-  }, [setSession]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,12 +64,11 @@ const Auth = () => {
 
   if (session) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Bienvenido</h2>
-        <p className="mb-4">Usuario: {session.user.email}</p>
+      <div className="bg-white p-4 rounded-lg shadow-md flex items-center space-x-4">
+        <span className="text-sm text-gray-700 hidden md:inline">Bienvenido, {session.user.email}</span>
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm font-medium transition-colors"
         >
           Cerrar Sesión
         </button>
@@ -80,36 +77,36 @@ const Auth = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">{isLogin ? 'Iniciar Sesión' : 'Registrarse'}</h2>
+    <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-md">
+      <h2 className="text-lg font-semibold mb-3 text-center">{isLogin ? 'Iniciar Sesión' : 'Registrarse'}</h2>
       
       {message.text && (
-        <div className={`mb-4 p-2 rounded ${message.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+        <div className={`mb-3 p-2 rounded text-sm ${message.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
           {message.text}
         </div>
       )}
       
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 mb-2">Correo Electrónico</label>
+        <div className="mb-3">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
             required
           />
         </div>
         
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700 mb-2">Contraseña</label>
+        <div className="mb-3">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
             required
           />
         </div>
@@ -117,16 +114,16 @@ const Auth = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded text-sm transition-colors disabled:opacity-50"
         >
           {loading ? 'Procesando...' : (isLogin ? 'Iniciar Sesión' : 'Registrarse')}
         </button>
       </form>
       
-      <div className="mt-4 text-center">
+      <div className="mt-3 text-center">
         <button
           onClick={() => setIsLogin(!isLogin)}
-          className="text-blue-500 hover:text-blue-700"
+          className="text-green-600 hover:text-green-700 text-sm"
         >
           {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
         </button>
@@ -135,4 +132,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default SimpleAuth;

@@ -1,12 +1,13 @@
 import React from 'react';
-import Home from './pages/Home';
+import './App.css';
+import SinglePageApp from './pages/SinglePageApp';
 import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <Home />
+        <SinglePageApp />
       </AuthProvider>
     </div>
   );
